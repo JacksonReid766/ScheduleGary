@@ -15,7 +15,7 @@ ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
 SHEET_ID = os.environ["GOOGLE_SHEET_ID"]
 GOOGLE_CREDS = os.environ["GOOGLE_CREDS_JSON"]
 CHECKLIST_ID = os.environ["SPREADSHEET_ID"]
-BRAVE_KEY = os.environ.get("BRAVE_API_KEY", "")
+TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "")
 
 COL_DATE, COL_TIME, COL_TITLE = 1, 2, 3
 COL_REM_1DAY, COL_REM_1HR, COL_REM_15MIN, COL_DONE = 4, 5, 6, 7
@@ -256,29 +256,30 @@ def action_list_checklist(sheet, urgency_filter):
 
 
 def action_search_jobs(params):
-    if not BRAVE_KEY:
-        return "Job search isn't set up yet — BRAVE_API_KEY is missing."
-    titles = " OR ".join(f'"{t}"' for t in params["job_titles"])
+    if not TAVILY_KEY:
+        return "Job search isn't set up yet — TAVILY_API_KEY is missing."
+    titles = " OR ".join(params["job_titles"])
     cities = " OR ".join(params["cities"])
-    remote_clause = " OR remote" if params.get("remote") else ""
+    remote_clause = " remote OR" if params.get("remote") else ""
     level = params.get("experience_level", "any")
     level_clause = f" {level}" if level not in ("any", None) else ""
-    query = (
-        f"({titles}){level_clause} jobs ({cities}){remote_clause} "
-        f"site:linkedin.com OR site:lever.co OR site:greenhouse.io OR site:jobs.ashbyhq.com"
-    )
-    resp = requests.get(
-        "https://api.search.brave.com/res/v1/web/search",
-        headers={"Accept": "application/json", "X-Subscription-Token": BRAVE_KEY},
-        params={"q": query, "count": 5},
-        timeout=10,
+    query = f"{remote_clause}{level_clause} {titles} jobs in {cities} California"
+    resp = requests.post(
+        "https://api.tavily.com/search",
+        json={
+            "api_key": TAVILY_KEY,
+            "query": query,
+            "max_results": 5,
+            "include_domains": ["linkedin.com", "lever.co", "greenhouse.io", "jobs.ashbyhq.com", "indeed.com"],
+        },
+        timeout=15,
     )
     resp.raise_for_status()
-    results = resp.json().get("web", {}).get("results", [])
+    results = resp.json().get("results", [])
     if not results:
         return "No results — try broadening the search."
     lines = [
-        f"• {r.get('title', '')}\n  {r.get('url', '')}\n  {r.get('description', '')[:120]}"
+        f"• {r.get('title', '')}\n  {r.get('url', '')}\n  {r.get('content', '')[:150]}"
         for r in results[:5]
     ]
     return "\n\n".join(lines)
