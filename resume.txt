@@ -1,30 +1,44 @@
-Jackson Reid
-(385) 225-5151 | jackson.winfield.reid@gmail.com
+JACKSON REID
+Field Sales Rep who builds the AI tools his managers wish they had
+Provo, UT | Open to Remote | jackson.winfield.reid@gmail.com | linkedin.com/in/jacksonwreid
 
-EDUCATION
-Brigham Young University, Provo — Sophomore (GPA 3.8), 2023–Present
-Timpview High School, Provo — Graduate, 2017–2021
+SUMMARY
+Field sales rep with hands-on management experience and a self-taught AI tooling practice. Runs blitz markets by day and builds automation systems at night: lead follow-up agents, client-facing web tools, and sales ops pipelines. Looking for an AI sales or sales-tech role where knowing how the product actually works is an asset, not a bonus.
 
 EXPERIENCE
-Church of Jesus Christ, Provo — Instructor, June 2023–Present
-- Instructed and mentored 200+ young adults in teaching methodologies
-- Collaborated with colleagues and administrators to align teaching strategies with institutional goals
+Sales Representative • Brightspeed Fiber • NC, FL, TN, OR | Jun 2025–Present
+- Ran door-to-door fiber sales blitzes across multiple states, self-managed territory from day one
+- Averaged 2 closes/day at ~$325 avg deal value, never went a full blitz day without a sale
+- Built a production AI SMS agent (Python, Anthropic API, GitHub Actions) that automates post-knock lead follow-up and objection handling
+- Designed fully automated lead retention pipeline: intake form → Google Sheets CRM → GitHub-triggered SMS agent → GitHub Pages dashboard
 
-Provo City — Lifeguard, May 2020–January 2021
-- Monitored swimmer safety; provided customer service to patrons
+Field Sales Manager • Liberty Business Services • Puerto Rico | Jan 2026–Mar 2026
+- Built a B2B field sales operation from zero for one of Puerto Rico's largest internet providers
+- Hired, trained, and activated a 10-rep team in under 30 days
+- Coached team to first 3 closed accounts within 30 days, ~$975 avg deal value
 
-SERVICE
-Volunteer Missionary – Church of Jesus Christ (Georgia), March 2021–March 2023
-- Two-year mission; learned Spanish; mentored individuals in diverse settings
+Sales Manager • Dash Exteriors • Utah | Sep 2025–Jan 2026
+- Built a 10-rep door-to-door team from zero
+- Closed the team's largest single account at $15,000 while managing daily operations
+- Worked the doors alongside reps daily, modeling objection handling in live field conditions
 
-Eagle Scout Project
-- Organized 80 volunteers for 355 hours to make and deliver 800 meals to homeless community in Provo
+Missionary / Assistant to the President • Church of Jesus Christ • Atlanta, GA | 2021–2023
+- Led and coordinated a team of missionaries; served as Assistant to the Mission President
+- Conversational Spanish
+
+Teacher & Trainer • Missionary Training Center • Provo, UT | 2023–2025
+- Trained 200+ new missionaries in communication, leadership, and teaching
+
+AI & TECHNICAL PROJECTS (2025–Present)
+- Production AI SMS agent (Python, Anthropic API, GitHub Actions) for fiber sales lead follow-up
+- TradeReadyWebsites.com: AI agent system that sources contractor leads, rewrites SEO copy, manages outreach; deployed on Netlify
+- Pitched AI expense-reimbursement automation to nonprofit leadership (HXP)
+- Stack: Python, Anthropic API, Google Sheets API, GitHub Actions, Streamlit, Netlify, SMS/email automation
+
+EDUCATION
+B.S. Business Management (In Progress) • WGU • Online | Junior, 3.7 GPA | Expected 2027
 
 SKILLS
-- Leadership: led teams, mentored individuals, fostered accountability
-- Bilingual: English & Spanish (fluent)
-- AI & Prompt Engineering: experienced in crafting prompts for task automation
-- Instruction & Teaching: clear communication, hands-on learning
-
-ACHIEVEMENTS
-- Eagle Scout, Boy Scouts of America
+Sales & Leadership: B2B field sales, team building from zero, objection handling, sales process design, performance management
+AI & Technical: Python, Anthropic API, multi-agent systems, SMS/email automation, Google Sheets API, GitHub Actions, Streamlit, Netlify
+Other: Eagle Scout | Bilingual English/Spanish
