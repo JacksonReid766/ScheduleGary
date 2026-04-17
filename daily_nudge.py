@@ -6,7 +6,7 @@ import anthropic
 import gspread
 import requests
 
-TELEGRAM_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 SPREADSHEET_ID = os.environ["SPREADSHEET_ID"]
 GOOGLE_CREDS_B64 = os.environ["GOOGLE_SHEETS_CREDENTIALS"]
