@@ -14,6 +14,7 @@ TOKEN = os.environ["TELEGRAM_TOKEN"]
 ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
 SHEET_ID = os.environ["GOOGLE_SHEET_ID"]
 GOOGLE_CREDS = os.environ["GOOGLE_CREDS_JSON"]
+CHECKLIST_ID = os.environ["SPREADSHEET_ID"]
 
 COL_DATE = 1
 COL_TIME = 2
@@ -27,12 +28,13 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 logger = logging.getLogger(__name__)
 
 SYSTEM_PROMPT = """\
-You are a scheduling parser. Today is {TODAY}. Reply ONLY with JSON, no other text.
+You are a scheduling and task parser. Today is {TODAY}. Reply ONLY with JSON, no other text.
 
-If user is scheduling: {{"action":"add","date":"YYYY-MM-DD","time":"HH:MM","title":"string"}}
+If user is scheduling an appointment: {{"action":"add","date":"YYYY-MM-DD","time":"HH:MM","title":"string"}}
 If user wants to see schedule: {{"action":"list","range":"today"|"week"}}
-If user is canceling: {{"action":"cancel","title":"string"}}
+If user is canceling an appointment: {{"action":"cancel","title":"string"}}
 If user is snoozing: {{"action":"snooze","minutes":int}}
+If user completed a move checklist task (e.g. "I finished X", "I completed X", "crossed off X", "done with X"): {{"action":"complete_task","task":"string"}}
 If unclear: {{"action":"unknown"}}"""
 
 
@@ -127,6 +129,21 @@ def action_cancel(sheet, title: str) -> str:
     return f"No active event found matching '{title}'."
 
 
+def action_complete_task(task_title: str) -> str:
+    gc = gspread.service_account_from_dict(json.loads(GOOGLE_CREDS))
+    sheet = gc.open_by_key(CHECKLIST_ID).sheet1
+    headers = sheet.row_values(1)
+    done_col = headers.index("done") + 1
+    records = sheet.get_all_records()
+    for i, row in enumerate(records):
+        if str(row.get("done", "")).upper() == "TRUE":
+            continue
+        if task_title.lower() in str(row.get("task", "")).lower():
+            sheet.update_cell(i + 2, done_col, "TRUE")
+            return f"Checked off: {row['task']}"
+    return f"No active task found matching '{task_title}'."
+
+
 def action_snooze(sheet, minutes: int) -> str:
     row, row_idx = find_last_reminded_event(sheet)
     if row is None:
@@ -177,6 +194,8 @@ def process_message(text: str, sheet) -> str:
         return action_cancel(sheet, data.get("title", ""))
     elif action == "snooze":
         return action_snooze(sheet, int(data.get("minutes", 0)))
+    elif action == "complete_task":
+        return action_complete_task(data.get("task", ""))
     else:
         return (
             "I can help you:\n"
@@ -184,7 +203,8 @@ def process_message(text: str, sheet) -> str:
             "- View: 'today' or 'week'\n"
             "- Cancel: 'Cancel dentist'\n"
             "- Snooze: 'snooze 30'\n"
-            "- Done: 'done'"
+            "- Done: 'done'\n"
+            "- Checklist: 'I finished finding a moving company'"
         )
 
 

@@ -30,6 +30,7 @@ jobs:
           GOOGLE_SHEET_ID:   ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_CREDS_JSON: ${{ secrets.GOOGLE_CREDS_JSON }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SPREADSHEET_ID:    ${{ secrets.SPREADSHEET_ID }}
         run: python bot_once.py
 
       - name: Send reminders

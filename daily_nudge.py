@@ -16,7 +16,7 @@ ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
 def get_sheet():
     creds_dict = json.loads(base64.b64decode(GOOGLE_CREDS_B64))
     gc = gspread.service_account_from_dict(creds_dict)
-    return gc.open("CA Move Checklist").sheet1
+    return gc.open_by_key(SPREADSHEET_ID).sheet1
 
 
 def get_tasks(sheet):
