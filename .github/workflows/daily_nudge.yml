@@ -30,7 +30,7 @@ jobs:
       - name: Send daily nudge
         env:
           ANTHROPIC_API_KEY:       ${{ secrets.ANTHROPIC_API_KEY }}
-          TELEGRAM_BOT_TOKEN:      ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TOKEN:          ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID:        ${{ secrets.TELEGRAM_CHAT_ID }}
           GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
           SPREADSHEET_ID:          ${{ secrets.SPREADSHEET_ID }}
