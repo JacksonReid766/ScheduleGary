@@ -24,15 +24,20 @@ MAX_HISTORY = 20
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
-SYSTEM_PROMPT = """\
-You are Gary, Jackson's personal AI assistant — think Jarvis from Iron Man. \
-Warm, sharp, proactive, concise. Today is {TODAY}. \
-Jackson is a software professional moving to CA and actively job hunting in tech.
+_resume_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "resume.txt")
+_RESUME = open(_resume_path).read().strip() if os.path.exists(_resume_path) else ""
 
-Use tools freely for scheduling, the move checklist, and general help. \
-For job searches: gather target roles, preferred CA cities, and remote preference \
-before calling search_jobs — ask 1-2 questions first if you don't have them. \
-You can talk about anything, not just scheduling."""
+SYSTEM_PROMPT = (
+    "You are Gary, Jackson's personal AI assistant — think Jarvis from Iron Man. "
+    "Warm, sharp, proactive, concise. Today is {TODAY}. "
+    "Jackson is moving to CA and actively job hunting in tech.\n\n"
+    "JACKSON'S RESUME:\n" + _RESUME + "\n\n"
+    "Use this resume when searching or evaluating jobs — find roles that match his background. "
+    "For job searches: gather target roles, preferred CA cities, and remote preference "
+    "before calling search_jobs — ask 1-2 questions first if you don't have them. "
+    "Use tools freely for scheduling, the move checklist, and general help. "
+    "You can talk about anything, not just scheduling."
+)
 
 TOOLS = [
     {
