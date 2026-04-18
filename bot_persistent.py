@@ -71,8 +71,10 @@ SONNET_SYSTEM = (
 # Keywords that require Sonnet (job reasoning, LinkedIn, resume evaluation)
 JOB_KEYWORDS = {
     "job", "jobs", "apply", "linkedin", "resume", "career",
-    "hire", "hiring", "position", "opening", "salary", "interview",
-    "optimize", "recruiter", "employed", "employment",
+    "hire", "hiring", "position", "positions", "opening", "openings",
+    "salary", "interview", "optimize", "recruiter", "employed", "employment",
+    "role", "roles", "opportunity", "opportunities", "work", "internship",
+    "tech", "engineer", "engineering", "developer", "analyst",
 }
 
 
@@ -444,7 +446,7 @@ def call_gary_haiku(history, user_text, schedule_sheet, checklist_sheet):
     messages = trimmed + [{"role": "user", "content": user_text}]
     system = HAIKU_SYSTEM.replace("{TODAY}", today)
     logger.info("Routing → Haiku")
-    return _tool_loop(client, "claude-haiku-4-5-20251001", 200, system, HAIKU_TOOLS, messages, schedule_sheet, checklist_sheet)
+    return _tool_loop(client, "claude-haiku-4-5-20251001", 512, system, HAIKU_TOOLS, messages, schedule_sheet, checklist_sheet)
 
 
 def call_gary_sonnet(history, user_text, schedule_sheet, checklist_sheet):
@@ -455,7 +457,7 @@ def call_gary_sonnet(history, user_text, schedule_sheet, checklist_sheet):
     messages = trimmed + [{"role": "user", "content": user_text}]
     system = SONNET_SYSTEM.replace("{TODAY}", today)
     logger.info("Routing → Sonnet")
-    return _tool_loop(client, "claude-sonnet-4-6", 400, system, SONNET_TOOLS, messages, schedule_sheet, checklist_sheet)
+    return _tool_loop(client, "claude-sonnet-4-6", 1024, system, SONNET_TOOLS, messages, schedule_sheet, checklist_sheet)
 
 
 # ── Main loop ──────────────────────────────────────────────────────────────────
