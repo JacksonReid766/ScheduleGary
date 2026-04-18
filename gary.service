@@ -23,9 +23,6 @@ ExecStart=/home/ubuntu/ScheduleGary/venv/bin/python bot_persistent.py
 Restart=always
 RestartSec=10
 
-# Load env vars from .env file
-EnvironmentFile=/home/ubuntu/ScheduleGary/.env
-
 # Output goes to journald (view with: journalctl -u gary -f)
 StandardOutput=journal
 StandardError=journal
