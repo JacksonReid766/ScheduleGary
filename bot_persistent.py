@@ -378,10 +378,6 @@ def action_search_jobs(params):
             "api_key": TAVILY_KEY,
             "query": query,
             "max_results": 5,
-            "include_domains": [
-                "linkedin.com", "lever.co", "greenhouse.io",
-                "jobs.ashbyhq.com", "indeed.com",
-            ],
         },
         timeout=15,
     )
