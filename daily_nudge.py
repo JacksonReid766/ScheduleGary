@@ -6,11 +6,13 @@ import anthropic
 import gspread
 import requests
 
-TELEGRAM_TOKEN = os.environ["TELEGRAM_TOKEN"]
-CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
-SPREADSHEET_ID = os.environ["SPREADSHEET_ID"]
-GOOGLE_CREDS_B64 = os.environ["GOOGLE_SHEETS_CREDENTIALS"]
-ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
+from secrets import S
+
+TELEGRAM_TOKEN = S.telegram_token
+CHAT_ID = S.telegram_chat_id
+SPREADSHEET_ID = S.spreadsheet_id
+GOOGLE_CREDS_B64 = S.google_sheets_credentials
+ANTHROPIC_KEY = S.anthropic_api_key
 
 
 def get_sheet():

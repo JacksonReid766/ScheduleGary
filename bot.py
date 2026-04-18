@@ -5,16 +5,14 @@ from datetime import datetime, timedelta, date
 
 import anthropic
 import gspread
-from dotenv import load_dotenv
+from secrets import S
 from telegram import Update
 from telegram.ext import ApplicationBuilder, MessageHandler, filters, ContextTypes
 
-load_dotenv()
-
-TOKEN = os.environ["TELEGRAM_TOKEN"]
-ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
-SHEET_ID = os.environ["GOOGLE_SHEET_ID"]
-GOOGLE_CREDS = os.environ["GOOGLE_CREDS_JSON"]
+TOKEN = S.telegram_token
+ANTHROPIC_KEY = S.anthropic_api_key
+SHEET_ID = S.google_sheet_id
+GOOGLE_CREDS = S.google_creds_json
 
 COL_DATE = 1
 COL_TIME = 2

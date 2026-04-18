@@ -3,3 +3,5 @@ gspread
 google-auth
 python-dotenv
 anthropic
+playwright>=1.44.0
+keyring>=24.0

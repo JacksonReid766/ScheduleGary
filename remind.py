@@ -4,14 +4,12 @@ from datetime import datetime
 
 import requests
 import gspread
-from dotenv import load_dotenv
+from secrets import S
 
-load_dotenv()
-
-TOKEN = os.environ["TELEGRAM_TOKEN"]
-CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
-SHEET_ID = os.environ["GOOGLE_SHEET_ID"]
-GOOGLE_CREDS = os.environ["GOOGLE_CREDS_JSON"]
+TOKEN = S.telegram_token
+CHAT_ID = S.telegram_chat_id
+SHEET_ID = S.google_sheet_id
+GOOGLE_CREDS = S.google_creds_json
 
 COL_DATE = 1
 COL_TIME = 2

@@ -1,0 +1,40 @@
+2026-04-17T13:12:39 INFO     ============================================================
+2026-04-17T13:12:39 INFO     OCI Claimer starting up
+2026-04-17T13:12:39 INFO       Shape:               VM.Standard.E2.1.Micro
+2026-04-17T13:12:39 INFO       Region:              us-sanjose-1
+2026-04-17T13:12:39 INFO       Availability domain: HDOu:US-SANJOSE-1-AD-1
+2026-04-17T13:12:39 INFO       Base poll interval:  60s
+2026-04-17T13:12:39 INFO       Max backoff:         300s
+2026-04-17T13:12:39 INFO       Log file:            oci_claimer.log
+2026-04-17T13:12:39 INFO     ============================================================
+2026-04-17T13:12:40 INFO     --- Attempt #1 ---
+2026-04-17T13:12:41 INFO     Waiting for VNIC attachment to retrieve public IP…
+2026-04-17T13:12:52 INFO     Public IP: 159.54.186.214
+2026-04-17T13:12:52 INFO     Instance claimed after 1 attempt(s)!
+
+OCID:   ocid1.instance.oc1.us-sanjose-1.anzwuljrgjmumuyc75p5wlefd4ascgjsdh74mbiel7ai4ewebasaxvafxshq
+Shape:  VM.Standard.E2.1.Micro
+State:  PROVISIONING
+Region: us-sanjose-1
+AD:     HDOu:US-SANJOSE-1-AD-1
+IP:     159.54.186.214
+2026-04-17T13:16:01 INFO     ============================================================
+2026-04-17T13:16:01 INFO     OCI Claimer starting up
+2026-04-17T13:16:01 INFO       Shape:               VM.Standard.E2.1.Micro
+2026-04-17T13:16:01 INFO       Region:              us-sanjose-1
+2026-04-17T13:16:01 INFO       Availability domain: HDOu:US-SANJOSE-1-AD-1
+2026-04-17T13:16:01 INFO       Base poll interval:  60s
+2026-04-17T13:16:01 INFO       Max backoff:         300s
+2026-04-17T13:16:01 INFO       Log file:            oci_claimer.log
+2026-04-17T13:16:01 INFO     ============================================================
+2026-04-17T13:16:01 INFO     --- Attempt #1 ---
+2026-04-17T13:16:03 INFO     Waiting for VNIC attachment to retrieve public IP…
+2026-04-17T13:16:14 INFO     Public IP: 146.235.225.88
+2026-04-17T13:16:14 INFO     Instance claimed after 1 attempt(s)!
+
+OCID:   ocid1.instance.oc1.us-sanjose-1.anzwuljrgjmumuyczm7dbu6wxy2574grwqzrdwuuu5kz732u2rhcisjd6m5q
+Shape:  VM.Standard.E2.1.Micro
+State:  PROVISIONING
+Region: us-sanjose-1
+AD:     HDOu:US-SANJOSE-1-AD-1
+IP:     146.235.225.88

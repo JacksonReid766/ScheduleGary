@@ -1,0 +1,34 @@
+# gary.service — systemd unit for the persistent Gary bot
+#
+# Installation (on the VPS, as root or with sudo):
+#   1. Copy this file to /etc/systemd/system/gary.service
+#   2. Edit WorkingDirectory and ExecStart paths to match where you cloned the repo
+#   3. sudo systemctl daemon-reload
+#   4. sudo systemctl enable gary
+#   5. sudo systemctl start gary
+#
+# Logs:
+#   journalctl -u gary -f
+
+[Unit]
+Description=Gary — Jarvis-style Telegram bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Change these two lines to match your VPS setup
+WorkingDirectory=/home/ubuntu/ScheduleGary
+ExecStart=/home/ubuntu/ScheduleGary/venv/bin/python bot_persistent.py
+
+Restart=always
+RestartSec=10
+
+# Load env vars from .env file
+EnvironmentFile=/home/ubuntu/ScheduleGary/.env
+
+# Output goes to journald (view with: journalctl -u gary -f)
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

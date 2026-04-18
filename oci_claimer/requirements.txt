@@ -1,0 +1,4 @@
+oci>=2.126.0
+python-telegram-bot>=20.0
+python-dotenv>=1.0.0
+keyring>=24.0
